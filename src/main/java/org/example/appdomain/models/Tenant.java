@@ -5,14 +5,7 @@ public class Tenant extends BasePerson {
 
     public Tenant(String name, int aptNr) {
         super(name);
-        this.aptNr = validateAptNr(aptNr);
-    }
-
-    private static int validateAptNr(int aptNr) {
-        if (aptNr <= 0 || aptNr > 32) {
-            throw new IllegalArgumentException("Invalid Apt. Number");
-        }
-        return aptNr;
+        this.aptNr = aptNr;
     }
 
     public int getAptNr() {
@@ -20,7 +13,7 @@ public class Tenant extends BasePerson {
     }
 
     public void setAptNr(int aptNr) {
-        this.aptNr = validateAptNr(aptNr);
+        this.aptNr = aptNr;
     }
 
     @Override

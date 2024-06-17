@@ -1,5 +1,7 @@
 package org.example.appdomain.testUtils;
 
+import org.example.appdomain.models.*;
+
 public class TestDataProvider {
 
     public static String NULL_NAME = null;
