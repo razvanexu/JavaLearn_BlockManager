@@ -1,6 +1,7 @@
 package org.example.appdomain.models;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 public class Apartment {
     private int aptNr;
@@ -64,7 +65,7 @@ public class Apartment {
         return utilitiesInUse;
     }
 
-    public void setUtilitiesInUse(Set<UtilityModel> utilitiesInUse) {
-        this.utilitiesInUse = utilitiesInUse;
+    public boolean addUtilitiesInUse(UtilityModel utilityToAdd) {
+        return utilitiesInUse.add(utilityToAdd);
     }
 }

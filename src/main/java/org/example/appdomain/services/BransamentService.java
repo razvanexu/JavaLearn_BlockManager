@@ -1,7 +1,9 @@
 package org.example.appdomain.services;
 
-import org.example.appdomain.models.*;
-import org.example.infrastructure.exceptions.*;
+import org.example.appdomain.models.Apartment;
+import org.example.appdomain.models.Utiliies;
+import org.example.appdomain.models.UtilityModel;
+import org.example.infrastructure.exceptions.InvalidCostException;
 
 public class BransamentService {
 
@@ -10,7 +12,8 @@ public class BransamentService {
             throw new InvalidCostException("invalid cost value");
         }
 
-        return apt.getUtilitiesInUse().add(utility);
+        return apt.getUtilitiesInUse()
+            .add(utility);
     }
 
     public boolean debransare(Apartment apt, Utiliies utility) {
