@@ -1,25 +1,25 @@
 package org.example.appdomain.models;
 
-import org.example.appdomain.services.*;
+import org.example.appdomain.services.UtilityCostProviderService;
 
 public class UtilityModel implements UtilityCostProviderService {
-    private Utiliies utilityName;
+    private Utilities utilityName;
     private double costPerUnit;
     private int cumulativeIndexConsumed;
     private int indexCurrentMonth;
 
-    public UtilityModel(Utiliies utilityName, double costPerUnit, int cumulativeIndexConsumed, int indexCurrentMonth) {
+    public UtilityModel(Utilities utilityName, double costPerUnit, int cumulativeIndexConsumed, int indexCurrentMonth) {
         this.utilityName = utilityName;
         this.costPerUnit = costPerUnit;
         this.cumulativeIndexConsumed = cumulativeIndexConsumed;
         this.indexCurrentMonth = indexCurrentMonth;
     }
 
-    public Utiliies getUtilityName() {
+    public Utilities getUtilityName() {
         return utilityName;
     }
 
-    public void setUtilityName(Utiliies utilityName) {
+    public void setUtilityName(Utilities utilityName) {
         this.utilityName = utilityName;
     }
 
@@ -48,15 +48,15 @@ public class UtilityModel implements UtilityCostProviderService {
     }
 
     @Override
+    public int hashCode() {
+        return utilityName.hashCode();
+    }
+
+    @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UtilityModel utility)) return false;
 
         return utilityName == utility.utilityName;
-    }
-
-    @Override
-    public int hashCode() {
-        return utilityName.hashCode();
     }
 }

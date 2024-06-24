@@ -1,6 +1,6 @@
 package org.example.appdomain.services;
 
-import org.example.appdomain.models.*;
+import org.example.appdomain.models.Utilities;
 
 public interface UtilityCostProviderService {
 
@@ -9,7 +9,7 @@ public interface UtilityCostProviderService {
     double COST_GAZ = 24;
     double COST_INCALZIRE = 12.5;
 
-    default double providePrice(Utiliies utility){
+    default double providePrice(Utilities utility) {
         return switch (utility) {
             case APA_RECE -> COST_APA_RECE;
             case APA_CALDA -> COST_APA_CALDA;

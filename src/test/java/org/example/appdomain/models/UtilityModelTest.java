@@ -1,7 +1,8 @@
 package org.example.appdomain.models;
 
-import org.example.appdomain.services.*;
-import org.junit.jupiter.api.*;
+import org.example.appdomain.services.UtilityCostProviderService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class UtilityModelTest {
 
@@ -10,39 +11,39 @@ class UtilityModelTest {
     void getUtilityName_ShouldReturnUtilityNameSetInConstructor() {
 
         //Given
-        UtilityModel underTest = new UtilityModel(Utiliies.APA_RECE, 20, 0, 35);
+        UtilityModel underTest = new UtilityModel(Utilities.APA_RECE, 20, 0, 35);
 
         //When
         var utilityName = underTest.getUtilityName();
 
         //Then
-        Assertions.assertEquals(Utiliies.APA_RECE, utilityName);
+        Assertions.assertEquals(Utilities.APA_RECE, utilityName);
     }
 
     @Test
     void setUtilityName_ShouldChangeUtilityName() {
 
         //Given
-        UtilityModel underTest = new UtilityModel(Utiliies.APA_RECE, 20, 0, 35);
+        UtilityModel underTest = new UtilityModel(Utilities.APA_RECE, 20, 0, 35);
 
         //When
         var oldUtilityName = underTest.getUtilityName();
-        underTest.setUtilityName(Utiliies.GAZ);
+        underTest.setUtilityName(Utilities.GAZ);
         var newUtilityName = underTest.getUtilityName();
 
         //Then
-        Assertions.assertEquals(Utiliies.APA_RECE, oldUtilityName);
-        Assertions.assertEquals(Utiliies.GAZ, newUtilityName);
+        Assertions.assertEquals(Utilities.APA_RECE, oldUtilityName);
+        Assertions.assertEquals(Utilities.GAZ, newUtilityName);
     }
 
     @Test
     void getCostPerUnit_ShouldReturnCostProvidedInConstructorBasedOnUtilityName() {
 
-        UtilityModel underTest = new UtilityModel(Utiliies.APA_RECE, 20, 0, 35);
+        UtilityModel underTest = new UtilityModel(Utilities.APA_RECE, 10, 0, 35);
 
         //When
         var utilityCost = underTest.getCostPerUnit();
-        var providedCost = UtilityCostProviderService.COST_APA_RECE;
+        double providedCost = UtilityCostProviderService.COST_APA_RECE;
 
         //Then
         Assertions.assertEquals(providedCost, utilityCost);
@@ -51,7 +52,7 @@ class UtilityModelTest {
     @Test
     void getCumulativeIndexConsumed_ShouldReturnCumulativeConsumption() {
 
-        UtilityModel underTest = new UtilityModel(Utiliies.APA_RECE, 20, 0, 35);
+        UtilityModel underTest = new UtilityModel(Utilities.APA_RECE, 20, 0, 35);
 
         //When
         var currentIndex = underTest.getCumulativeIndexConsumed();
@@ -63,7 +64,7 @@ class UtilityModelTest {
     @Test
     void setCumulativeIndexConsumed_ShouldReturnUpdatedCumulativeIndexOnGetter() {
 
-        UtilityModel underTest = new UtilityModel(Utiliies.APA_RECE, 20, 0, 35);
+        UtilityModel underTest = new UtilityModel(Utilities.APA_RECE, 20, 0, 35);
 
         //When
         underTest.setCumulativeIndexConsumed(underTest.getIndexCurrentMonth());

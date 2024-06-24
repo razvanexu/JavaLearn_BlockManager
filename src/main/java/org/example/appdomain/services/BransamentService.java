@@ -1,10 +1,11 @@
 package org.example.appdomain.services;
 
 import org.example.appdomain.models.Apartment;
-import org.example.appdomain.models.Utiliies;
+import org.example.appdomain.models.Utilities;
 import org.example.appdomain.models.UtilityModel;
 import org.example.appdomain.repository.AptDao;
 import org.example.infrastructure.exceptions.InvalidCostException;
+import org.example.infrastructure.exceptions.InvalidUtilityException;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,14 @@ public class BransamentService {
             throw new InvalidCostException("invalid cost value");
         }
 
+        for (var utilityInList : apt.getUtilitiesInUse()) {
+            if (utilityInList.getUtilityName().equals(utility.getUtilityName())) {
+                logger.log(Level.SEVERE, () -> "Utility " + utility.getUtilityName() + " exists" +
+                    " throwing InvalidUtilityException");
+                throw new InvalidUtilityException("utility Already Exists");
+            }
+        }
+
         logger.log(Level.INFO, () -> "Successfully added utility " + utility.getUtilityName() +
             " to apartment " + apt.getAptNr());
 
@@ -49,7 +58,7 @@ public class BransamentService {
         return optionalApt.get();
     }
 
-    public boolean debransare(int aptNr, Utiliies utility) {
+    public boolean debransare(int aptNr, Utilities utility) {
         var apt = getApartment(aptNr);
         if (apt == null) {
             logger.log(Level.SEVERE, () -> "Apartamentul cu nr. " + aptNr + " nu exista");
@@ -65,7 +74,7 @@ public class BransamentService {
             logger.log(Level.INFO, () -> "Apartamentul " + apt.getAptNr() + " a fost debransat de la utilitatea "
                 + utility.name());
         } else {
-            logger.log(Level.INFO, () -> "Apartamentul " + apt.getAptNr() + " nu a fost bransat la utilitatea "
+            logger.log(Level.INFO, () -> "Apartamentul " + apt.getAptNr() + " nu este bransat la utilitatea "
                 + utility.name());
 
         }
