@@ -1,16 +1,11 @@
 package org.example.appdomain.services;
 
-import org.example.appdomain.models.*;
-import org.example.infrastructure.exceptions.*;
+import org.example.appdomain.models.UtilityModel;
 
 public class UtilityCostCalculatorService {
 
-    public double calculateCostPerUtility(Apartment apt, UtilityModel utility){
+    public double calculateCostPerUtility(UtilityModel utility) {
 
-        if (!apt.getUtilitiesInUse().contains(utility)){
-            throw new NullUtilityException("apartament debransat");
-        }
-
-        return (utility.getCumulativeIndexConsumed() - utility.getIndexCurrentMonth()) * utility.getCostPerUnit();
+        return Math.abs(utility.getCumulativeIndexConsumed() - utility.getIndexCurrentMonth()) * utility.getCostPerUnit();
     }
 }

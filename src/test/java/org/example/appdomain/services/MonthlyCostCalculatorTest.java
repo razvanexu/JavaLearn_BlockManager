@@ -9,7 +9,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -30,7 +29,7 @@ class MonthlyCostCalculatorTest {
         //Given
 
         when(apartment.getUtilitiesInUse()).thenReturn(Set.of(utilityModel));
-        when(utilityCostCalculatorService.calculateCostPerUtility(eq(apartment), any()))
+        when(utilityCostCalculatorService.calculateCostPerUtility(any()))
             .thenReturn(10.0);
 
         //When

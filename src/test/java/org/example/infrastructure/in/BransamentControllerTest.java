@@ -1,7 +1,6 @@
 package org.example.infrastructure.in;
 
 import org.example.appdomain.models.Apartment;
-import org.example.appdomain.models.AptOwner;
 import org.example.appdomain.models.Utilities;
 import org.example.appdomain.repository.AptDao;
 import org.example.appdomain.services.BransamentService;
@@ -9,8 +8,6 @@ import org.example.infrastructure.exceptions.InvalidUtilityException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -27,12 +24,7 @@ class BransamentControllerTest {
 
     @BeforeEach
     void setup() {
-        apartment = new Apartment(20,
-            0.0,
-            0.0,
-            2,
-            List.of(new AptOwner("Ciolacu")),
-            new HashSet<>());
+        apartment = new Apartment(1, 2, "Ciolacu");
         AptDao aptDao = mock(AptDao.class);
         bransamentService = new BransamentService(aptDao);
         underTest = new BransamentController(bransamentService);

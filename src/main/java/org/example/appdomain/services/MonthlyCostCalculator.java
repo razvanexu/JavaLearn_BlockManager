@@ -1,6 +1,6 @@
 package org.example.appdomain.services;
 
-import org.example.appdomain.models.*;
+import org.example.appdomain.models.Apartment;
 
 public class MonthlyCostCalculator {
 
@@ -13,7 +13,7 @@ public class MonthlyCostCalculator {
     public double calculatMonthlyTotalToPay(Apartment apt) {
         return apt.getUtilitiesInUse()
             .stream()
-            .map(utilityModel -> utilityCostCalculatorService.calculateCostPerUtility(apt, utilityModel))
+            .map(utilityCostCalculatorService::calculateCostPerUtility)
             .reduce(0.0, Double::sum);
     }
 }

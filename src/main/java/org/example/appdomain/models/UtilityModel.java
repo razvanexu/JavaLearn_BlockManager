@@ -1,8 +1,6 @@
 package org.example.appdomain.models;
 
-import org.example.appdomain.services.UtilityCostProviderService;
-
-public class UtilityModel implements UtilityCostProviderService {
+public class UtilityModel {
     private Utilities utilityName;
     private double costPerUnit;
     private int cumulativeIndexConsumed;
@@ -58,5 +56,15 @@ public class UtilityModel implements UtilityCostProviderService {
         if (!(o instanceof UtilityModel utility)) return false;
 
         return utilityName == utility.utilityName;
+    }
+
+    @Override
+    public String toString() {
+        return "UtilityModel{" +
+            "cumulativeIndexConsumed=" + cumulativeIndexConsumed +
+            ", indexCurrentMonth=" + indexCurrentMonth +
+            ", utilityName=" + utilityName +
+            ", costPerUnit=" + costPerUnit +
+            '}';
     }
 }
